@@ -1,0 +1,130 @@
+.foods-div{
+    /* background-color: antiquewhite; */
+}
+
+.foods{
+    /* background-color: rgb(251, 18, 57) !important; */
+}
+
+
+/* .food-btn{
+    background-color: white;
+    margin: 50px 30px;
+    border: none;
+    font-weight: 700;
+    font-size: 25px;
+    position: relative;
+} */
+/* .food-btn::before{
+    position: absolute;
+    content: '';
+    height: 4px;
+    bottom: -5px; 
+} */
+/* .food-btn:hover:before {
+    width: 90%;
+    background: rgb(186, 239, 255);
+}
+ */
+/* .active, .food-btn:hover {
+    background-color: rgb(251, 0, 0);
+    color: white;
+} */
+
+.btn{
+    font-weight: 700;
+    font-size: 25px;
+    border: none;
+}
+.active, .btn:hover {
+    /* background-color: rgb(255, 0, 0) !important; */
+    /* color: rgb(255, 255, 255) !important; */
+    text-decoration: underline;
+    color: red !important;
+}
+
+.grandma-grid{
+    background-color: rgb(179, 220, 236);
+    background-color: rgba(179, 220, 236, 0.526);
+    /* border-radius: 50px !important; */
+}
+.parent-grid{
+    /* background-color: rgb(85, 165, 42) !important; */
+    /* padding: 0 !important; */
+}
+.child-grid{
+    /* padding: 0px !important; */
+    /* padding: 30px !important; */
+}
+.grid-div{
+    /* background-color: deeppink !important; */
+    border: px solid rgb(235, 248, 255);
+    text-align: center;
+    height: 500px;
+    border-radius: 15px;
+
+    /* box-shadow: inset 0 0 10px; */
+    /* box-shadow: -5px -5px 10px; */
+    /* box-shadow: inset 0 0 5px 5px olive; */
+    /* box-shadow: 20px 10px; */
+    /* box-shadow: 5px 5px 10px; */
+    /* box-shadow: 5px 5px 20px; */
+    
+    /* box-shadow: -10px -10px 7px 0px rgb(249, 252, 253), 10px 10px 7px 0px rgb(147, 166, 173); */
+    box-shadow: -5px -5px 4px 2px rgb(246, 254, 255), 5px 5px 4px 2px rgb(122, 138, 143);
+}
+
+#myDIV{
+    /* background-color: aqua; */
+    margin: 50px 0px;
+}
+.input-username{
+    border: 2px solid rgb(1, 187, 47);
+    background-color: rgb(235, 249, 254);
+    border-radius: 10px;
+    padding: 12px 10px;
+    margin: 5px 5px;
+    font-size: 14px;
+    box-shadow: inset 10px 10px 10px rgb(147, 166, 173);
+}
+.details-button{
+    background-color: pink;
+    border-radius: 20px;
+    border: none;
+    font-size: 15px;
+    padding: 5px 15px;
+}
+
+
+
+@media (min-width: 1350px) { 
+    .grandma-grid{
+        /* background-color: rgb(172, 230, 210) !important; */
+        max-width: 1280px !important;
+        margin: auto !important;
+    }
+    
+}
+@media (max-width: 1350px) { 
+    .grandma-grid{
+        max-width: 90% !important;
+        margin: auto !important;
+    }
+    
+}
+@media (min-width: 800px) { 
+    .grandma-grid{
+        padding: 0 15%;
+    }
+    
+}
+
+
+@media (max-width: 599px) { 
+        .grandma-grid{
+            /* background-color: rgb(0, 195, 255) !important; */
+            max-width: 95% !important;
+            margin: auto !important;
+        }
+        
+}

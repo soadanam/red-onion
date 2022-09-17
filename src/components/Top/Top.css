@@ -1,0 +1,40 @@
+.main-div{
+    background-color: pink;
+    background-image: url(../../images/bannerbackground.png);
+    height: 50vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.search-div{
+    max-width: 600px !important;
+    margin: auto;
+}
+.btn-common-style{
+    background-color: red;
+    color: white;
+    font-weight: 300;
+    font-size: 18px;
+    padding:12px 40px;
+}
+.top-input{
+    /* background-color: aquamarine; */
+    /* border-radius: 30px; */
+    border-top-left-radius: -30px;
+    border-start-start-radius: 30px;
+    border-end-start-radius: 30px;
+    color: lightgray;
+    padding: 12px 30px;
+    font-size: 16px;
+}
+.top-search{
+    border-radius: 30px !important;
+    margin-left: -30px !important;
+    /* border-radius: 13em 13em 0 0 / 3em 3em 0 0 !important; */
+    /* border-radius:1em 1em 0 0 !important; */
+}

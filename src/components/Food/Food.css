@@ -1,0 +1,15 @@
+.food-div{
+    background-color: aquamarine;
+    /* margin: 20px; */
+    border: 2px solid rgb(11, 128, 83);
+    border-radius: 20px;
+    max-width: 300px;
+
+    /* display: flex; */
+    /* flex-flow: wrap; */
+    /* justify-content: space-around; */
+}
+
+.aa{
+    background-color: pink;
+}
