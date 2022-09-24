@@ -3,7 +3,7 @@ import './Foods.css';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import Food from '../Food/Food';
-import { Container, Row, Col } from 'react-bootstrap';
+// import { Container, Row, Col } from 'react-bootstrap';
 import { Grid, List, ListItem, Item } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -15,10 +15,13 @@ const Foods = () => {
 
     const [typeOfFood, setTypeOfFood] = useState('redOnion.dinner.json');
 
-    const handleFoodsType = (foodName) => {
-        setTypeOfFood(foodName)
+    const handleFoodsType = (foodName, e) => {
+        setTypeOfFood(foodName);
+        // handleFoodClick(e);
     };
 
+
+    //fetching data from Various local json file each time by onClick in a button
     useEffect(() => {
         fetch(typeOfFood)
             .then(res => res.json())
@@ -26,133 +29,78 @@ const Foods = () => {
     }, [typeOfFood]);
 
 
-    /* const handleColor = () => {
-        document.getElementById("color").style.color = "red";
-    } */
-    // <h4>Lunch</h4>
 
-    {/* <Container fluid>
-            <Row>
-                <Col lg="6">
-                    {
-                        foods.map(x => <Food key={x.id} id={x.id} name={x.name} img={x.img} price={x.price} details={x.details} ></Food>)
-                    }
-                </Col>
-            </Row>
+    //Event Handler Function
+    const handleFoodClick = (event) => {
 
-        </Container> */}
-    /*  <Container >
- 
-         <Row>
-             <Col className='foods-div'>
-                 {
-                     foods.map(x => <Food key={x.id} id={x.id} name={x.name} img={x.img} price={x.price} details={x.details} ></Food>)
-                 }
-             </Col>
-         </Row>
- 
-     </Container> */
-    {/* <Grid container spacing={{ xs: 2, md: 3 }}>
-         {foods.map((_, index) => (
-             <Grid item xs={1} sm={1} md={2} lg={4} key={index}>
-                 <ListItem className='food-div'>
-                     <div className='food-div2'>
-                         <h1>This is FOOD</h1>
-                         <h2>ID: {foods.id}</h2>
-                         <h2>Name: {foods.name}</h2>
-                         <img className='img-fluid' src={foods.img} alt="" />
-                     </div>
-                 </ListItem>
-             </Grid>
-         ))}
-     </Grid> */}
+        const allClasses = document.getElementsByClassName('food-btn');
+        for (let i = 0; i < allClasses.length; i++) {
+            allClasses[i].classList.remove('active')
+        };
 
-    // <Grid container spacing={{ xs: 2, md: 3 }} column={{ sx: 4, sm: 8, md: 12 }}>
-    //     {foods.map(x => (
-    //         <Grid items xs={12} sm={6} md={4} key={foods.id}>
-    //             <ListItem>
-
-    //                 {/* <div className='food-div'>
-    //                     <h1>This is FOOD</h1>
-    //                     <h2>ID: {x.id}</h2>
-    //                     <h2>Name: {x.name}</h2>
-    //                     <img className='img-fluid' src={x.img} alt="" />
-    //                 </div> */}
-
-    //                 {/* <Food x={x}></Food> */}
-
-    //             </ListItem>
-    //         </Grid>
-    //     ))}
-    // </Grid>
+        event.currentTarget.classList.add('active');
+        // event.target.classList.add('actives');
 
 
+        // target VS currentTarget 
+        ///////////// "target" and "currentTarget" is  almost same! but... 
+        ////////"target" is carries the value while function/ event is triggered and remains the same all the time! 
+        ////And, "currentTarget"  refers to the present. It's the most recent target that caught the event that bubbled up from elsewhere.
 
-    // let header = document.getElementById("myDIV");
-    // let btns = header.getElementsByClassName("food-btn");
-    // for (let i = 0; i < btns.length; i++) {
-    //     btns[i].addEventListener("click", function () {
-    //         let current = document.getElementsByClassName("active");
-    //         current[0].className = current[0].className.replace(" active", "");
-    //         this.className += " active";
-    //     });
-    // }
+        // const myEvent = event.target;
+        // const myEvent = event.currentTarget;
+        // const myEvent = event.currentTarget.parentNode;
+        // const myEvent = event.currentTarget.parentNode.children;
+        // const myEvent = event.currentTarget.parentNode.removeChild(event.target);
+        // console.log("EVENT:", myEvent);
 
-
-    var header = document?.getElementById("myDIV");
-    var btns = header?.getElementsByClassName("btn");
-    for (var i = 0; i < btns?.length; i++) {
-        btns[i].addEventListener("click", function () {
-            var current = document.getElementsByClassName("active");
-            current[0].className = current[0].className.replace(" active", "");
-            this.className += " active";
-        });
-    }
+        // event.target.style.backgroundColor = "green"; //worked
+        // event.target.remove(event.target) //worked for removing target
+        // event.target.parentNode.removeChild(event.target); //worked parent>child>remove
+        // event.target.parentNode.remove(event.target); //deletes parent that means all child also
+    };
 
 
-    //navigate to details page//
+    //navigate to details page, using Dynamic Route path//
     const navigate = useNavigate();
     const handleDetailsButton = (foodID) => {
         navigate(`/foods/details/${foodID}`)
     };
 
+    //navigate to cart page function
+    const handleCheckout = () => navigate('/checkout');
+
+
 
     return (
         <>
-
             <div id="myDIV">
-                <button className='btn food-btn' onClick={() => handleFoodsType('redOnion.breakfast.json')}> Breakfast </button>
-                <button className='btn food-btn' onClick={() => handleFoodsType('redOnion.lunch.json')}> Lunch </button>
-                <button className='btn' onClick={() => handleFoodsType('redOnion.dinner.json')} > Dinner </button>
+                <button className='btn food-btn ' onClick={(e) => { handleFoodsType('redOnion.breakfast.json'); handleFoodClick(e); }}> Breakfast </button>
+                <button className='btn food-btn active' onClick={(e) => { handleFoodsType('redOnion.lunch.json'); handleFoodClick(e); }}> Lunch </button>
+                <button className='btn food-btn ' onClick={(e) => { handleFoodsType('redOnion.dinner.json'); handleFoodClick(e); }} > Dinner </button>
             </div>
-            
 
             <Grid className='grandma-grid' container direction="row" justifyContent="center" alignItems="center" spacing={{}} columns={{ xs: 12, sm: 12, md: 12 }}>
-
                 {foods.map(x => (
                     <Grid className='parent-grid' item xs={12} sm={6} md={4} key={x.id}>
-
                         <ListItem className='child-grid'>
                             <div className='grid-div d-flex flex-column'>
-                                <div className='w-50 m-auto'>
+                                <div className='w-100 m-auto'>
                                     <img src={x.img} alt="" className='img-fluid' />
                                 </div>
-                                <div className='m-auto text-center'>
-                                    <input className='input-username' type="text" placeholder='username' />
-                                    <input className='input-username' type="text" placeholder='password' />
-
-                                    <h4>FOOD</h4>
-                                    <h6>ID: {x.id} </h6>
+                                <div className='m-auto text-center food-info'>
                                     <h6>{x.name} </h6>
-                                    <button onClick={()=>handleDetailsButton(`${x.id}`)} className='details-button'> Details </button>
+                                    <p>{x.details}</p>
+                                    <h5>{x.Price}</h5>
+                                    <button onClick={() => handleDetailsButton(`${x.id}`)} className='details-button'> Details </button>
                                 </div>
                             </div>
                         </ListItem>
-
                     </Grid>
-
                 ))}
             </Grid>
+
+            <button className='check-out-button' onClick={handleCheckout}>Checkout Your Food</button>
         </>
 
     );

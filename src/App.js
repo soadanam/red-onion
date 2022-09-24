@@ -13,6 +13,8 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import Shipping from './components/Shipping/Shipping';
 import Foods from './components/Foods/Foods';
 import Details from './components/Details/Details';
+import Footer from './components/Footer/Footer';
+import CheckOut from './components/CheckOut/CheckOut';
 
 
 function App() {
@@ -41,13 +43,22 @@ function App() {
                 </ProtectedRoute>}>
             </Route>
 
-            {/* <Route path='/lunch' element={<Foods></Foods>} ></Route> */}
+            <Route path='/checkout'
+              element={
+                <ProtectedRoute>
+                  <CheckOut />
+                </ProtectedRoute>
+              }>
+
+            </Route>
+
             <Route path='/foods/details/:foodID' element={<Details></Details>}></Route>
 
 
             <Route path='*' element={<NotFound></NotFound>}></Route>
 
           </Routes>
+          <Footer></Footer>
         </BrowserRouter>
       </AuthProvider>
     </div>

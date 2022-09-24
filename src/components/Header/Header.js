@@ -13,12 +13,13 @@ import brandLogo from '../../../src/images/logo2.png'
 
 const Header = () => {
    const {user, googleLogOutAuth} = useAuth();
+
    return (
       <>
          {['md'].map((expand) => (
             <Navbar key={expand} bg="light" expand={expand} className="mb-3 nav-bar">
-               <Container fluid>
-                  <Navbar.Brand href="/home"><img src={brandLogo} alt="" className='img-fluuu brand-image' /></Navbar.Brand>
+               <Container fluid className='container'>
+                  <Navbar.Brand href="/home"><img src={brandLogo} alt="" className='img-fluid brand-image' /></Navbar.Brand>
                   <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
                   <Navbar.Offcanvas
                      id={`offcanvasNavbar-expand-${expand}`}
@@ -33,8 +34,11 @@ const Header = () => {
                      <Offcanvas.Body>
                         <Nav className="justify-content-end flex-grow-1 pe-3">
                            <Nav.Link as={NavLink} to="/home#action1">Home</Nav.Link>
-                           <Nav.Link as={NavLink} to="/login#action">Login</Nav.Link>
-                           <Nav.Link as={Link} to="/register#action3">Register</Nav.Link>
+
+                           {!user?.email && <Nav.Link as={NavLink} to="/login#action">Login</Nav.Link> }
+                           
+                           {!user?.email && <Nav.Link as={NavLink} to="/register#action3">Register</Nav.Link>}
+                           
                            <Nav.Link as={NavLink} to='/cart'>Cart</Nav.Link>
                            <Nav.Link as={NavLink} to='/shipping'>Shipping</Nav.Link>
 
@@ -51,6 +55,7 @@ const Header = () => {
                                  Something else here
                               </NavDropdown.Item>
                            </NavDropdown>
+                           
                         </Nav>
                         <Form className="d-flex">
                            <Form.Control
@@ -61,7 +66,7 @@ const Header = () => {
                            />
                            <Button variant="outline-success">Search</Button>
                         </Form>
-                        {user?.email && <h5>{user.displayName}</h5> }
+                        {user?.email && <h6 className='top-user-name' >{user.displayName}</h6> }
                         {user?.email && <button onClick={googleLogOutAuth} className="btn btn-danger ms-2">Logout</button>}
                      </Offcanvas.Body>
                   </Navbar.Offcanvas>

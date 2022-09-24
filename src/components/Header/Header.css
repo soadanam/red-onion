@@ -7,3 +7,14 @@
     max-width: 150px !important;
     /* background-color: greenyellow; */
 }
+.top-user-name{
+    color: rgb(0, 195, 255);
+    margin: 0px 0px 0px 0px;
+    padding: 0 5px;
+}
+
+@media (min-width: 1400px){
+    .top-user-name{
+        margin: 13px 0px 0px 0px;
+    }
+}
